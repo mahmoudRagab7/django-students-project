@@ -1,0 +1,48 @@
+<!-- info/templates/info/about.html -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>About - FAQs</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      h1 {
+        color: #333;
+      }
+      .faq {
+        margin-bottom: 20px;
+      }
+      .question {
+        font-weight: bold;
+        color: #007bff;
+      }
+      .answer {
+        margin-top: 5px;
+      }
+      .nav {
+        margin: 20px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Frequently Asked Questions</h1>
+
+    <div class="nav">
+      <a href="{% url 'info:home' %}">Home</a> |
+      <a href="{% url 'info:about' %}">About/FAQ</a>
+    </div>
+
+    {% if faqs %} {% for faq in faqs %}
+    <div class="faq">
+      <p class="question">Q: {{ faq.question }}</p>
+      <p class="answer">A: {{ faq.answer }}</p>
+    </div>
+    {% endfor %} {% else %}
+    <p>No FAQs available.</p>
+    {% endif %}
+  </body>
+</html>
